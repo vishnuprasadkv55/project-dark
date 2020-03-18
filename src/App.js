@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/landing-page/LandingPage';
 
 function App() {
   return (
