@@ -19,7 +19,7 @@ this.state = {
     this.handleSearch = this.handleSearch.bind(this);
     
     const {createStore} = require('redux');
-this.store = createStore(myReducer);
+    
 const myReducer = (state = this.state,action) =>{
     
     var updatedMoviesArray = [];
@@ -32,6 +32,7 @@ const myReducer = (state = this.state,action) =>{
     });
     }
 }
+this.store = createStore(myReducer);
 
 }
     
