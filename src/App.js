@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/app.css';
+import './styles/tailwind.css';
 import LandingPage from './components/landing-page/LandingPage';
 
 function App() {

@@ -3,6 +3,7 @@ import MovieCard from '../movie-card/MovieCard';
 import ContentPage1 from '../../assets/API/CONTENTLISTINGPAGE-PAGE1.json';
 import ContentPage2 from '../../assets/API/CONTENTLISTINGPAGE-PAGE2.json';
 import ContentPage3 from '../../assets/API/CONTENTLISTINGPAGE-PAGE3.json';
+import {createStore} from 'redux';
 
 class RomanticComedy extends React.Component {
     constructor(props){
@@ -17,22 +18,6 @@ this.state = {
     value: ''
 }
     this.handleSearch = this.handleSearch.bind(this);
-    
-    const {createStore} = require('redux');
-    
-const myReducer = (state = this.state,action) =>{
-    
-    var updatedMoviesArray = [];
-    if(action.type === 'SEARCH') { 
-    updatedMoviesArray = this.state.moviesList.filter(function(item){
-        return item['name'].toLowerCase().includes(this.state.value)
-    });
-    this.setState({
-        movies : updatedMoviesArray
-    });
-    }
-}
-this.store = createStore(myReducer);
 
 }
     
@@ -74,16 +59,17 @@ loadMore() {
 }
 handleSearch(event) {
 
+var updatedMoviesArray = [];
     this.setState({value: event.target.value});
-    this.store.dispatch({type: 'SEARCH'});
-    // updatedMoviesArray = this.state.moviesList.filter(function(item){
-    //     return item['name'].toLowerCase().includes(event.target.value)
-    // });
-    // this.setState({
-    //     movies : updatedMoviesArray
-    // });
+    updatedMoviesArray = this.state.moviesList.filter(function(item){
+        return item['name'].toLowerCase().includes(event.target.value)
+    });
+    this.setState({
+        movies : updatedMoviesArray
+    });
   }
 render () {
+    
     var imageUrl = 'https://raw.githubusercontent.com/vishnuprasadkv55/project-dark/master/src/assets/Slices/';
     return (
     <div className="pt-20">
